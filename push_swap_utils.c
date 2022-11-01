@@ -6,46 +6,69 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/10/26 13:38:59 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/01 12:12:43 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	printf_list(t_list **lst);
+int	ft_atoi(const char *str)
+{
+	int	i;
+	int	resul;
+	int	minus;
+
+	i = 0;
+	resul = 0;
+	minus = 1;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] < 14))
+		i++;
+	if (str[i] == '-')
+	{
+		i++;
+		minus = -1;
+	}
+	else if (str[i] == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		if (str[i] >= '0' && str[i] <= '9')
+			resul = resul * 10 + str[i] - '0';
+		i++;
+	}
+	return (resul * minus);
+}
 
 void	addlast(int content, t_list **anterior)
 {
 	t_list	*siguiente;
 	t_list	*ds;
-	
+
 	siguiente = (t_list *)malloc(sizeof(t_list));
-	siguiente = anterior;
-	while (ds -> next != NULL)
-	{
-		printf("a ver q hace\n");
-		(*s) = (*anterior) -> next;
-	}
-	(*anterior) -> next = siguiente;
 	siguiente -> content = content;
 	siguiente -> next = NULL;
-	printf_list(anterior);
+	ds = (*anterior);
+	while (ds -> next != NULL)
+	{
+		ds = ds -> next;
+	}
+	ds -> next = siguiente;
 }
 
 void	make_list(int argc, char **input, t_list **primerelemento)
 {
 	int		i;
 
-	(*primerelemento) -> content = input[1][0] - 48;
-	(*primerelemento) -> next = NULL;
+	if ((*primerelemento) == NULL)
+		(*primerelemento) = (t_list *)malloc(sizeof(t_list));
+	(*primerelemento)->content = ft_atoi(input[1]);
+	(*primerelemento)->next = NULL;
 	i = 2;
 	while (i < argc)
 	{
-		printf("zenbat doa input%d\n", input[i][0] - 48);
-		addlast(input[i][0] - 48, primerelemento);
+		addlast(ft_atoi(input[i]), primerelemento);
 		i++;
 	}
-	
 }
 
 void	printf_list(t_list **lst)
@@ -63,12 +86,12 @@ void	printf_list(t_list **lst)
 	}
 }
 
-int list_is_sort(t_list *list_num)
+int	list_is_sort(t_list **list_num)
 {
 	t_list	*ds;
 	int		i;
 
-	ds = list_num;
+	ds = *list_num;
 	i = ds -> content;
 	while (ds != NULL)
 	{
@@ -80,42 +103,19 @@ int list_is_sort(t_list *list_num)
 	return (1);
 }
 
-void swap_a(t_list **list_num)
-{
-	t_list	*ds;
-	t_list	*c;
-
-
-	ds = *list_num;
-	ds = ds -> next;
-	c = ds -> next;
-	(*list_num) -> next = c;
-	ds -> next = *list_num;
-	*list_num = ds;
-
-}
-
-void push_b(t_list **list_a, t_list **list_b)
-{
-	addlast((*list_a) -> content, list_b);
-}
-
 int	main(int argc, char **argv)
 {
 	t_list	*list_a;
 	t_list	*list_b;
-
-	list_a = (t_list *)malloc(sizeof(t_list));
-	list_b = (t_list *)malloc(sizeof(t_list));
+	t_list  *list_c;
+	
+	make_list(argc, argv, &list_c);
 	make_list(argc, argv, &list_a);
-	make_list(argc, argv, &list_b);
-	// swap_a(&list_a);
-	// printf_list(&list_a);
-	push_b(&list_a, &list_b);
-	push_b(&list_a, &list_b);
-	push_b(&list_a, &list_b);
-	push_b(&list_a, &list_b);
-	// printf("hau ordenatuta al dago %d\n", list_is_sort(list_a));
-	// printf_list(list_b);
+	quick_sort(&list_a,  &list_b);
+	bubble(&list_c, &list_b);
+	printf_list(&list_a);
+	// printf("aurrekoa a da\n");
+	// printf_list(&list_b);
+	
 	return (0);
 }
