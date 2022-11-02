@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:39:38 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/01 12:09:01 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:36:38 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,77 @@ int	compare_first(t_list **list_a, t_list **list_b)
 {
 	if (*list_a == NULL || *list_b == NULL)
 		return (0);
-	return((*list_a) -> content <= (*list_b) -> content);
+	return((*list_a) -> content >= (*list_b) -> content);
 }
+
+void	quick_sort_bubble(t_list **list_a, t_list **list_b)
+{
+	int	i;
+	int	j;
+
+	while (*list_a != NULL && find_minimum(list_a) < 0)
+	{		
+		i = 0;
+		j = find_minimum(list_a);
+		while (i > j)
+		{
+			rotate_down(list_a);
+			write(1, "rra\n", 4);
+			i--;
+		}
+		push_b(list_a, list_b);
+		write(1, "pb\n", 3);
+
+	}
+	// printf("%d mugimendu egin ditu quick sortek\n", count);
+}
+
 
 void	bubble(t_list **list_a, t_list **list_b)
 {
-	int	i;
-
-	i = 0;
 	while ((!list_is_sort(list_a) || *list_b != NULL))
 	{
-		push_b(list_a, list_b);
-		i++;
-		if (compare_first(list_a, list_b))
+		quick_sort_bubble(list_a, list_b);
+		if (compare_first(list_a, &((*list_a) -> next)))
 		{
-			push_b(list_b, list_a);
-			i++;
-			swap_a(list_a);
-			i++;
-			push_b(list_a, list_b);
-			i++;
+			if (compare_first(&((*list_b) -> next), list_b))
+			{
+				swap_a(list_a);
+				swap_a(list_b);
+				write(1, "ss\n", 3);
+			}
+			else
+			{
+				swap_a(list_a);
+				write(1, "sa\n", 3);
+			}
 		}
-		if (*list_a == NULL)
+		if (list_is_sort(list_a) && *list_b == NULL)
+			break ;
+		push_b(list_a, list_b);
+		write(1, "pb\n", 3);
+		if (*list_a == NULL || list_is_sort(list_a))
 		{
 			while (*list_b != NULL)
 			{
+				if (compare_first(&((*list_b) -> next), list_b))
+				{
+					if (compare_first(list_a, &((*list_a) -> next)))
+					{
+						swap_a(list_a);
+						swap_a(list_b);
+						write(1, "ss\n", 3);
+					}
+					else
+					{
+						swap_a(list_b);
+						write(1, "sb\n", 3);
+					}
+				}
 				push_b(list_b, list_a);
-				i++;
+				write(1, "pa\n", 3);
 			}
 		}
 	}
-	printf("%d mugimendu egin ditu bubblek\n", i);
+	// printf("%d mugimendu egin ditu bubblek\n", i);
 }
