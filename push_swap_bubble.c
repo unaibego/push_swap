@@ -47,9 +47,9 @@ void	bubble(t_list **list_a, t_list **list_b)
 	while ((!list_is_sort(list_a) || *list_b != NULL))
 	{
 		quick_sort_bubble(list_a, list_b);
-		if (compare_first(list_a, &((*list_a) -> next)))
+		if (*list_a != NULL && compare_first(list_a, &((*list_a) -> next)))
 		{
-			if (compare_first(&((*list_b) -> next), list_b))
+			if ( *list_b != NULL && compare_first(&((*list_b) -> next), list_b))
 			{
 				swap_a(list_a);
 				swap_a(list_b);
@@ -69,9 +69,9 @@ void	bubble(t_list **list_a, t_list **list_b)
 		{
 			while (*list_b != NULL)
 			{
-				if (compare_first(&((*list_b) -> next), list_b))
+				if (*list_b != NULL && compare_first(&((*list_b) -> next), list_b))
 				{
-					if (compare_first(list_a, &((*list_a) -> next)))
+					if (*list_a != NULL && compare_first(list_a, &((*list_a) -> next)))
 					{
 						swap_a(list_a);
 						swap_a(list_b);

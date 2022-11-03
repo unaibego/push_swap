@@ -39,5 +39,7 @@ void	bubble(t_list **list_a, t_list **list_b);
 int		ft_atoi(const char *str);
 void	quick_sort(t_list **list_a, t_list **list_b);
 int		find_minimum(t_list **list_a);
+int		push_swap_errors(int argc, char **argv);
+int		same_input(int c, char **argv);
 
 #endif

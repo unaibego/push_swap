@@ -15,7 +15,7 @@
 int	ft_atoi(const char *str)
 {
 	int	i;
-	int	resul;
+	unsigned long long int	resul;
 	int	minus;
 
 	i = 0;
@@ -34,6 +34,7 @@ int	ft_atoi(const char *str)
 	{
 		if (str[i] >= '0' && str[i] <= '9')
 			resul = resul * 10 + str[i] - '0';
+		// printf("zenbat doa resul %d\n", resul);
 		i++;
 	}
 	return (resul * minus);
@@ -109,11 +110,13 @@ int	main(int argc, char **argv)
 	t_list	*list_b;
 	t_list	*list_c;
 
+	if (push_swap_errors(argc, argv))
+		return (0);
 	make_list(argc, argv, &list_c);
 	make_list(argc, argv, &list_a);
 	//quick_sort(&list_a,  &list_b);
 	bubble(&list_c, &list_b);
-	//printf_list(&list_c);
+	// printf_list(&list_c);
 	// printf("aurrekoa a da\n");
 	// printf_list(&list_b);
 
