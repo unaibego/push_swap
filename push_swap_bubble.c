@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:39:38 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/02 14:36:38 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/04 13:21:33 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	quick_sort_bubble(t_list **list_a, t_list **list_b)
 		}
 		push_b(list_a, list_b);
 		write(1, "pb\n", 3);
-
 	}
 	// printf("%d mugimendu egin ditu quick sortek\n", count);
 }

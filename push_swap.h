@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:37:41 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/01 10:00:07 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/04 13:10:51 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 typedef struct s_list
 {
 	int				content;
+	int				posA;
+	int				posB;
 	struct s_list	*next;
 }					t_list;
 
