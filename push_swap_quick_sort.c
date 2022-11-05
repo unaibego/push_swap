@@ -33,7 +33,7 @@ int	find_minimum(t_list **list_a)
 		i++;
 	}
 	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
-	if (i * 3 / 4 < j)
+	if (i / 2 < j)
 		return (j - i);
 	else
 		return (j);
@@ -45,7 +45,14 @@ void	quick_sort(t_list **list_a, t_list **list_b)
 	int	j;
 
 	while (*list_a != NULL)
-	{		
+	{	
+
+		fill_up_posA(list_a, list_b);
+		fill_up_posB(list_a, list_b);
+		printf("hau a da AAAAAAAAAAAAAAAAAAAAAAAAA\n");
+		printf_list(list_a);
+		printf("Hau B da BBBBBBBBBBBBBBBBBBBBBBBBBBB\n");
+		printf_list(list_b);	
 		i = 0;
 		j = find_minimum(list_a);
 		while (i < j)

@@ -31,10 +31,11 @@ int	ft_lstsize(t_list *lst)
 void	fill_up_posA(t_list **list_a, t_list **list_b)
 {
 	t_list	*ds;
-	int		len;
+	float	len;
+	int		i;
 
 	ds = *list_a;
-	len = ft_lstsize(list_a);
+	len = ft_lstsize(*list_a);
 	i = 0;
 	while (i < len / 2)
 	{
@@ -44,46 +45,56 @@ void	fill_up_posA(t_list **list_a, t_list **list_b)
 	}
 	while (ds != NULL)
 	{
-		ds -> posA = (len - 0.5) / 2;
+		ds -> posA = (len) / 2;
 		ds = ds -> next;
-		len--;
+		len = len - 2;
 	}
 
 }
 
-void	fill_up_posB(t_list **list_a, t_list	**list_b)
+void	fill_up_posB(t_list **list_a, t_list **list_b)
 {
 	t_list	*ds;
-	int		i;
-	int		j;
 	int		minimo;
 
 	ds = *list_a;
 	minimo = ds -> content;
-	i = 0;
 	while (ds != NULL)
 	{
-
+		ds -> posB = find_position(ds -> content, list_b);
 		ds = ds -> next;
-		i++;
 	}
-	if (i * 3 / 4 < j)
-		return (j - i);
-	else
-		return (j);
 }
 
-void	find_position(int c, t_list **list_a)
+int	find_position(int c, t_list **list_b)
 {
 	t_list	*ds;
-	int		len; 
+	int		len;
+	int		i;
+	int		pos;
 
-	ds = *list_a;
-	len = ft_lstsize(list_a);
-	while (i < len / 2)
+	ds = *list_b;
+	len = ft_lstsize(*list_b);
+	i = 0;
+	pos = 0;
+	while (i < len)
 	{
-		ds -> posA = i;
-		ds = ds -> next;
 		i++;
+		if (ds -> content > c)
+		{
+			// printf("kaixo, content %d eta c %d----", ds -> content, c);
+			pos = i;
+		}	
+		ds = ds -> next;
+		
 	}
+	// printf("pos==%d\n", pos);
+	if (pos > len / 2)
+	{
+		// printf("a ver");
+		return (pos - len - 1);
+	}
+		
+	else
+		return(pos);
 }
