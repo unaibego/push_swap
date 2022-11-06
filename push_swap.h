@@ -47,5 +47,7 @@ int		ft_lstsize(t_list *lst);
 void	fill_up_posA(t_list **list_a, t_list **list_b);
 void	fill_up_posB(t_list **list_a, t_list **list_b);
 int		find_position(int c, t_list **list_b);
+void	legend_quick_sort(t_list **list_a, t_list **list_b);
+int		absolut(int c);
 
 #endif

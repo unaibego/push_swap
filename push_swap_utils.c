@@ -114,11 +114,9 @@ int	main(int argc, char **argv)
 		return (0);
 	make_list(argc, argv, &list_c);
 	make_list(argc, argv, &list_a);
-	fill_up_posA(&list_a, &list_b);
-	fill_up_posB(&list_a, &list_b);
-	quick_sort(&list_a,  &list_b);
+	legend_quick_sort(&list_a,  &list_b);
 	// bubble(&list_c, &list_b);
-	// printf_list(&list_a);
+	printf_list(&list_a);
 	// printf("aurrekoa a da\n");
 	// printf_list(&list_b);
 
