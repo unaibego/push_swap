@@ -6,17 +6,17 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/02 14:20:18 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/07 15:33:02 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str)
+long int	ft_atoi(const char *str)
 {
-	int	i;
-	unsigned long long int	resul;
-	int	minus;
+	int			i;
+	long int	resul;
+	int			minus;
 
 	i = 0;
 	resul = 0;
