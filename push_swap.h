@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:37:41 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/07 15:44:52 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/09 13:31:20 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,11 @@ int			same_input(int c, char **argv);
 int			ft_lstsize(t_list *lst);
 void		fill_up_posA(t_list **list_a);
 void		fill_up_posB(t_list **list_a, t_list **list_b);
-int			find_position(int c, t_list **list_b);
+int			find_position(int len, int c, t_list **list_b);
 void		legend_quick_sort(t_list **list_a, t_list **list_b);
 int			absolut(int c);
+void		do_sgl_movements(t_list **list_a, t_list **list_b, int posA, int posB);
+void		do_doble_movements(t_list **list_a, t_list **list_b, int posA, int posB);
+int			find_minimums(t_list **list_a);
 
 #endif

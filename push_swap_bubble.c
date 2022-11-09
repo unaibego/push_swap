@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:39:38 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/04 13:21:33 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/09 13:30:39 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	compare_first(t_list **list_a, t_list **list_b)
 {
 	if (*list_a == NULL || *list_b == NULL)
 		return (0);
-	return((*list_a) -> content >= (*list_b) -> content);
+	return ((*list_a) -> content >= (*list_b) -> content);
 }
 
 void	quick_sort_bubble(t_list **list_a, t_list **list_b)
@@ -24,10 +24,10 @@ void	quick_sort_bubble(t_list **list_a, t_list **list_b)
 	int	i;
 	int	j;
 
-	while (*list_a != NULL && find_minimum(list_a) < 0)
+	while (*list_a != NULL && find_minimums(list_a) < 0)
 	{		
 		i = 0;
-		j = find_minimum(list_a);
+		j = find_minimums(list_a);
 		while (i > j)
 		{
 			rotate_down(list_a);

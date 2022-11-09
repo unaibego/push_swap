@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 13:24:59 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/07 18:15:59 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/09 13:27:11 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,47 +56,28 @@ void	fill_up_posB(t_list **list_a, t_list **list_b)
 {
 	t_list	*ds;
 	int		minimo;
+	int		len;
 
 	ds = *list_a;
 	minimo = ds -> content;
+	len = ft_lstsize(*list_b);
 	while (ds != NULL)
 	{
-		ds -> posB = find_position(ds -> content, list_b);
+		ds -> posB = find_position(len, ds -> content, list_b);
 		ds = ds -> next;
 	}
 }
 
-int	tartekoa_da(t_list *lehenengoa, t_list *aurrekoa, t_list *hurrengoa, int c)
+int	tartekoa_da(t_list *aurrekoa, t_list *hurrengoa, int c)
 {
 	if (hurrengoa == NULL)
 	{
-		if (c < lehenengoa -> content)
-		{
-			if (aurrekoa -> content > c && lehenengoa -> content < aurrekoa -> content)
-			{
-				return (1);
-			}
-		}
 		return (0);
 	}
-	printf(" c====== %d hau hurrengoaren contenta da %d eta hau aurrekoarena %d\n", c , hurrengoa -> content, aurrekoa -> content);
 	if (aurrekoa -> content > c)
 	{
 		if (hurrengoa -> content < c)
-		{
-			printf("fdasdfdfsa\n");
 			return (1);
-		}
-	}
-	if (aurrekoa -> content < c && hurrengoa -> content > c)
-	{
-		hurrengoa = hurrengoa -> next;
-		aurrekoa = aurrekoa -> next;
-		if (hurrengoa -> content > aurrekoa -> content)
-		{
-			printf("fdasdfewradsfasddfsa\n");
-			return (1);
-		}
 	}
 	return (0);
 }
@@ -157,7 +138,6 @@ int	find_minimum(t_list **list_a)
 		}
 		ds = ds -> next;
 	}
-	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
 	if (i / 2 <= j && i != 1)
 		return (j - i);
 	else
@@ -179,59 +159,46 @@ int	find_maximum(t_list **list_a)
 	{
 		if (maximo < ds -> content)
 		{
-			// printf(" a vver que hostias es esta puuta mierda maxximoo==%d eta content==%d\n", maximo, ds -> content);
 			maximo = ds -> content;
 			j = i;
 		}
 		ds = ds -> next;
 		i++;
 	}
-	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
 	if (i / 2 < j && i != 1)
 		return (j - i - 1);
 	else
 		return (j);
 }
 
-int	find_position(int c, t_list **list_b)
+int	find_position(int len, int c, t_list **list_b)
 {
 	t_list	*ds;
-	int		len;
 	int		i;
 	int		pos;
 
 	ds = *list_b;
-	len = ft_lstsize(*list_b);
 	i = 0;
 	pos = 0;
-	if ((*list_b) != NULL && is_max_min(c, list_b) )
+	if ((*list_b) != NULL && is_max_min(c, list_b))
 	{
-		// printf("c ====%d que cojones pasa hau minimoa da %d eta hau maximoa %d\n", c, find_minimum(list_b), find_maximum(list_b));
 		if (absolut(find_minimum(list_b)) < absolut(find_maximum(list_b)))
 			return (find_minimum(list_b));
 		else
 			return (find_maximum(list_b));
 	}
-
-	while (i < len)
+	while (++i < len)
 	{
-		i++;
-		if (tartekoa_da(*list_b, ds, ds -> next, c))
+		if (tartekoa_da(ds, ds -> next, c))
 		{
 			pos = i;
-			if (ds -> next == NULL)
-				pos = 0;
 			break ;
 		}
 		ds = ds -> next;
 	}
-	// printf("pos==%d\n", pos);
 	if (pos > len / 2 && len != 1)
-	{
 		return (pos - len);
-	}
-	else
-		return (pos);
+	return (pos);
 }
 
 int	absolut(int c)
@@ -242,7 +209,7 @@ int	absolut(int c)
 		return (c);
 }
 
-int	find_minimum_legend(t_list **list_a)
+int	find_minimum_cost(t_list **list_a)
 {
 	t_list	*ds;
 	int		i;
@@ -251,12 +218,11 @@ int	find_minimum_legend(t_list **list_a)
 
 	ds = *list_a;
 	minimo = absolut(ds -> posA) + absolut(ds -> posB);
-	// printf(" **************************hau minimisimoa da %d\n", minimo);
 	j = 0;
 	i = 0;
 	while (ds != NULL)
 	{
-		if (minimo >  absolut(ds -> posA) + absolut(ds -> posB))
+		if (minimo > absolut(ds -> posA) + absolut(ds -> posB))
 		{
 			minimo = absolut(ds -> posA) + absolut(ds -> posB);
 			j = i;
@@ -264,73 +230,80 @@ int	find_minimum_legend(t_list **list_a)
 		ds = ds -> next;
 		i++;
 	}
-		return (j);
+	return (j);
+}
+
+void	do_doble_movements(t_list **list_a, t_list **list_b, int posA, int posB)
+{
+	while (posA < 0 && posB < 0)
+	{
+		rotate_down(list_a);
+		rotate_down(list_b);
+		write(1, "rrr\n", 4);
+		posA++;
+		posB++;
+	}
+	while (posA > 0 && posB > 0)
+	{
+		rotate_up(list_a);
+		rotate_up(list_b);
+		write(1, "rr\n", 3);
+		posA--;
+		posB--;
+	}
+	do_sgl_movements(list_a, list_b, posA, posB);
+}
+
+
+void	do_sgl_movements(t_list **list_a, t_list **list_b, int posA, int posB)
+{
+	while (posA < 0)
+	{
+		rotate_down(list_a);
+		write(1, "rra\n", 4);
+		posA++;
+	}
+	while (posA > 0)
+	{
+		rotate_up(list_a);
+		write(1, "ra\n", 3);
+		posA--;
+	}
+	while (posB < 0)
+	{
+		rotate_down(list_b);
+		write(1, "rrb\n", 4);
+		posB++;
+	}
+	while (posB > 0)
+	{
+		rotate_up(list_b);
+		write(1, "rb\n", 3);
+		posB--;
+	}
 }
 
 void	legend_quick_sort(t_list **list_a, t_list **list_b)
 {
 	t_list	*ds;
-	int	posA;
-	int	posB;
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 
 	while (*list_a != NULL)
 	{	
 
 		fill_up_posA(list_a);
 		fill_up_posB(list_a, list_b);
-		// printf("hau a da AAAAAAAAAAAAAAAAAAAAAAAAA\n");
-		// printf_list(list_a);
-		// printf("Hau B da BBBBBBBBBBBBBBBBBBBBBBBBBBB\n");
-		// printf_list(list_b);	
 		i = 0;
-		j = find_minimum_legend(list_a);
+		j = find_minimum_cost(list_a);
 		ds = *list_a;
-		// printf("ze hostiassssssssssssssssssssssss %d\n", j);
-		while (i < j)
-		{
+		while (j > i++)
 			ds = ds -> next;
-			i++;
-		}
-		posA =  ds -> posA;
-		posB =  ds -> posB;
-		i = 0;
-		while (i < posA)
-		{
-			rotate_up(list_a);
-			write(1, "ra\n", 3);
-			i++;
-		}
-		while (i > posA)
-		{
-			rotate_down(list_a);
-			write(1, "rra\n", 4);
-			i--;
-		}
-		i = 0;
-		while (i < posB && posB != 1)
-		{
-			rotate_up(list_b);
-			write(1, "rb\n", 3);
-			i++;
-		}
-		while (i > posB)
-		{
-			rotate_down(list_b);
-			write(1, "rrb\n", 4);
-			i--;
-		}
+		do_doble_movements(list_a, list_b, ds -> posA, ds -> posB);
 		push_b(list_a, list_b);
 		write(1, "pb\n", 3);
-		if (posB == 1)
-		{
-			swap_a(list_b);
-			write(1, "sb\n", 3);
-		}
-
 	}
-
+	do_doble_movements(list_a, list_b, 0, find_minimum(list_b));
 	while (*list_b != NULL)
 	{
 		push_b(list_b, list_a);

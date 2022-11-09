@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/07 15:33:02 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/09 13:29:32 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,9 @@ int	main(int argc, char **argv)
 		return (0);
 	make_list(argc, argv, &list_c);
 	make_list(argc, argv, &list_a);
-	legend_quick_sort(&list_a,  &list_b);
-	// bubble(&list_c, &list_b);
-	printf_list(&list_a);
+	// legend_quick_sort(&list_a,  &list_b);
+	bubble(&list_c, &list_b);
+	// printf_list(&list_a);
 	// printf("aurrekoa a da\n");
 	// printf_list(&list_b);
 

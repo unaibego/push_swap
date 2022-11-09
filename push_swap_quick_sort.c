@@ -6,38 +6,38 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 09:30:34 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/07 16:26:35 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/09 13:31:04 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int	find_minimum(t_list **list_a)
-// {
-// 	t_list	*ds;
-// 	int		i;
-// 	int		j;
-// 	int		minimo;
+int	find_minimums(t_list **list_a)
+{
+	t_list	*ds;
+	int		i;
+	int		j;
+	int		minimo;
 
-// 	ds = *list_a;
-// 	minimo = ds -> content;
-// 	i = 0;
-// 	while (ds != NULL)
-// 	{
-// 		if (minimo >= ds -> content)
-// 		{
-// 			minimo = ds -> content;
-// 			j = i;
-// 		}
-// 		ds = ds -> next;
-// 		i++;
-// 	}
-// 	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
-// 	if (i / 2 < j)
-// 		return (j - i);
-// 	else
-// 		return (j);
-// }
+	ds = *list_a;
+	minimo = ds -> content;
+	i = 0;
+	while (ds != NULL)
+	{
+		if (minimo >= ds -> content)
+		{
+			minimo = ds -> content;
+			j = i;
+		}
+		ds = ds -> next;
+		i++;
+	}
+	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
+	if (i / 2 < j)
+		return (j - i);
+	else
+		return (j);
+}
 
 void	quick_sort(t_list **list_a, t_list **list_b)
 {
