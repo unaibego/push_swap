@@ -74,5 +74,7 @@ int			ft_lstsize(t_list *lst);
 int			absolut(int c);
 int			is_max_min(int c, t_list **list_b);
 // ********************************* ps_three_input ***************************
-
+void		three_input(t_list **list_a, t_list **list_b);
+int			find_maximum_three(t_list **list_a);
+int			find_minimum_three(t_list **list_a);
 #endif

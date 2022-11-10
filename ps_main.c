@@ -38,6 +38,8 @@ void	make_list(int argc, char **input, t_list **primerelemento)
 	i = 2;
 	while (i < argc)
 	{
+		printf_list(primerelemento);
+		printf("***************%d eta %s***************************\n",ft_atoi(input[i]), input[i]);
 		addlast(ft_atoi(input[i]), primerelemento);
 		i++;
 	}
@@ -53,9 +55,10 @@ int	main(int argc, char **argv)
 		return (0);
 	make_list(argc, argv, &list_c);
 	make_list(argc, argv, &list_a);
-	// legend_quick_sort(&list_a, &list_b);
-	bubble(&list_c, &list_b);
-	// printf_list(&list_a);
+	three_input(&list_a, &list_b);
+	legend_quick_sort(&list_a, &list_b);
+	// bubble(&list_c, &list_b);
+	printf_list(&list_a);
 	// printf("aurrekoa a da\n");
 	// printf_list(&list_b);
 	return (0);
