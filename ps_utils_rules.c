@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_utils_rules.c                            :+:      :+:    :+:   */
+/*   ps_utils_rules.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/01 10:59:58 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/10 11:46:04 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,12 @@ void	swap_a(t_list **list_num)
 	t_list	*ds;
 	t_list	*c;
 
-
 	ds = *list_num;
 	ds = ds -> next;
 	c = ds -> next;
-	(*list_num) -> next = c;
+	(*list_num)-> next = c;
 	ds -> next = *list_num;
 	*list_num = ds;
-
 }
 
 void	rotate_up(t_list **list_a)
@@ -47,7 +45,7 @@ void	rotate_up(t_list **list_a)
 
 	ds = *list_a;
 	c = *list_a;
-	(*list_a) = (*list_a) -> next;
+	(*list_a) = (*list_a)-> next;
 	while (ds -> next != NULL)
 	{
 		ds = ds -> next;
@@ -75,12 +73,12 @@ void	rotate_down(t_list **list_a)
 void	push_b(t_list **list_a, t_list **list_b)
 {
 	if (*list_b != NULL)
-		addfirst((*list_a) -> content, list_b);
+		addfirst((*list_a)-> content, list_b);
 	else
 	{
 		(*list_b) = (t_list *)malloc(sizeof(t_list));
-		(*list_b) -> content = (*list_a) -> content;
-		(*list_b) -> next = NULL;
+		(*list_b)-> content = (*list_a)-> content;
+		(*list_b)-> next = NULL;
 	}
-	(*list_a) = (*list_a) ->next;
+	(*list_a) = (*list_a)->next;
 }

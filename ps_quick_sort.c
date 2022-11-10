@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_quick_sort.c                             :+:      :+:    :+:   */
+/*   ps_quick_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 09:30:34 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/09 13:31:04 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/10 11:09:19 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int	find_minimums(t_list **list_a)
 		ds = ds -> next;
 		i++;
 	}
-	// printf("hau j==|%d| eta hau i==!%d|\n", j, i);
 	if (i / 2 < j)
 		return (j - i);
 	else
@@ -46,13 +45,8 @@ void	quick_sort(t_list **list_a, t_list **list_b)
 
 	while (*list_a != NULL)
 	{	
-
-		fill_up_posA(list_a);
-		fill_up_posB(list_a, list_b);
-		printf("hau a da AAAAAAAAAAAAAAAAAAAAAAAAA\n");
-		printf_list(list_a);
-		printf("Hau B da BBBBBBBBBBBBBBBBBBBBBBBBBBB\n");
-		printf_list(list_b);	
+		fill_up_pos_a(list_a);
+		fill_up_pos_b(list_a, list_b);
 		i = 0;
 		j = find_minimum(list_a);
 		while (i < j)
@@ -69,7 +63,6 @@ void	quick_sort(t_list **list_a, t_list **list_b)
 		}
 		push_b(list_a, list_b);
 		write(1, "pb\n", 3);
-
 	}
 	while (*list_b != NULL)
 	{
@@ -77,5 +70,4 @@ void	quick_sort(t_list **list_a, t_list **list_b)
 		write(1, "pa\n", 3);
 		i++;
 	}
-	// printf("%d mugimendu egin ditu quick sortek\n", count);
 }

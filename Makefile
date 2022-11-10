@@ -6,7 +6,7 @@
 #    By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/30 08:54:44 by ubegona           #+#    #+#              #
-#    Updated: 2022/11/09 10:00:15 by ubegona          ###   ########.fr        #
+#    Updated: 2022/11/10 08:56:10 by ubegona          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ OBJS = $(SRCS:.c=.o)
 SRCS = $(wildcard *.c)
 BOBJS = $(BSRCS:.c=.o)
 BSRCS = $(wildcard *bonus.c)
-AR = gcc -o push_swap
+AR = gcc -fsanitize=address -g3 -o push_swap
 GCCS = gcc -c -Wall -Werror -Wextra
-NAME = push_swap.a
+NAME = push_swap
 
 all: $(NAME)
 
