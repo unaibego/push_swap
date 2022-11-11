@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:37:41 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 12:54:22 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/11 11:47:44 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void		bubble(t_list **list_a, t_list **list_b);
 // ********************************* ps_error ********************************
 long int	ft_atoi(const char *str);
 int			same_input(int c, char **argv);
-int			push_swap_errors(int argc, char **argv);
+int			push_swap_errors(int start, int argc, char **argv);
 // ********************************* ps_fill_up ******************************
 void		fill_up_pos_a(t_list **list_a);
 void		fill_up_pos_b(t_list **list_a, t_list **list_b);
@@ -51,15 +51,16 @@ int			find_minimum_cost(t_list **list_a);
 void		legend_quick_sort(t_list **list_a, t_list **list_b);
 // ********************************* ps_main *********************
 void		printf_list(t_list **lst);
-void		make_list(int argc, char **input, t_list **primerelemento);
+void		make_list(int start, int argc, char **input,
+				t_list **primerelemento);
 int			main(int argc, char **argv);
+void		algorithm(t_list **list_a, t_list **list_b);
 // ********************************* ps_movement *****************************
 void		do_dbl_movements(t_list **list_a, t_list **list_b,
 				int pos_a, int pos_b);
 void		do_sgl_movements(t_list **list_a, t_list **list_b,
 				int pos_a, int pos_b);
 // ********************************* ps_quick_sort ***************************
-int			find_minimums(t_list **list_a);
 void		quick_sort(t_list **list_a, t_list **list_b);
 // ********************************* ps_utils_rules ***************************
 void		addfirst(int content, t_list **anterior);
@@ -74,7 +75,15 @@ int			ft_lstsize(t_list *lst);
 int			absolut(int c);
 int			is_max_min(int c, t_list **list_b);
 // ********************************* ps_three_input ***************************
-void		three_input(t_list **list_a, t_list **list_b);
+int			three_inputs(t_list **list_a, t_list **list_b);
 int			find_maximum_three(t_list **list_a);
-int			find_minimum_three(t_list **list_a);
+// ********************************* ps_five_input ***************************
+void		five_inputs(t_list **list_a, t_list **list_b);
+int			find_minimum_five(t_list **list_a);
+// ********************************* ps_split ***************************
+int			contletter(char const *s, char c);
+int			contword(char const *s, char c);
+char		**ft_split(char const *s, char c);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
+size_t		ft_strlen(const char *str);
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_bubble.c                                 :+:      :+:    :+:   */
+/*   ps_bubble.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:39:38 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 09:05:23 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/11 10:17:37 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void	quick_sort_bubble(t_list **list_a, t_list **list_b)
 	int	i;
 	int	j;
 
-	while (*list_a != NULL && find_minimums(list_a) < 0)
+	while (*list_a != NULL && find_minimum_five(list_a) < 0)
 	{		
 		i = 0;
-		j = find_minimums(list_a);
+		j = find_minimum_five(list_a);
 		while (i > j)
 		{
 			rotate_down(list_a);

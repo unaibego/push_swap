@@ -6,13 +6,13 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/01 09:30:34 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 11:09:19 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/11 10:14:40 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_minimums(t_list **list_a)
+int	find_minimum_five(t_list **list_a)
 {
 	t_list	*ds;
 	int		i;
@@ -48,7 +48,7 @@ void	quick_sort(t_list **list_a, t_list **list_b)
 		fill_up_pos_a(list_a);
 		fill_up_pos_b(list_a, list_b);
 		i = 0;
-		j = find_minimum(list_a);
+		j = find_minimum_five(list_a);
 		while (i < j)
 		{
 			rotate_up(list_a);

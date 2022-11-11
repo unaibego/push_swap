@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 11:39:38 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 10:36:42 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/11 11:39:06 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,43 +41,43 @@ long int	ft_atoi(const char *str)
 
 int	same_input(int c, char **argv)
 {
-	int	j;
+	int	start;
 
-	j = 1;
-	while (argv[j])
+	start = 1;
+	while (argv[start])
 	{
-		if (c == ft_atoi(argv[j]))
+		if (c == ft_atoi(argv[start]))
 			return (1);
-		j++;
+		start++;
 	}
 	return (0);
 }
 
-int	push_swap_errors(int argc, char **argv)
+int	push_swap_errors(int start, int argc, char **argv)
 {
 	int	i;
-	int	j;
 
-	j = 0;
 	if (argc < 2)
 		return (1);
-	while (argv[++j])
+	while (argv[start])
 	{
 		i = -1;
-		while (argv[j][++i])
+		while (argv[start][++i])
 		{
-			if ((argv[j][i] < '0' || argv[j][i] > '9') && argv[j][i] != '-' )
+			if ((argv[start][i] < '0' || argv[start][i] > '9')
+				&& argv[start][i] != '-' )
 			{
 				write(1, "Error\n", 6);
 				return (1);
 			}
 		}
-		if ((ft_atoi(argv[j]) > 2147483647)
-			|| same_input(ft_atoi(argv[j]), &argv[j]))
+		if ((ft_atoi(argv[start]) > 2147483647)
+			|| same_input(ft_atoi(argv[start]), &argv[start]))
 		{
 			write(1, "Error\n", 6);
 			return (1);
 		}
+		start++;
 	}
 	return (0);
 }
