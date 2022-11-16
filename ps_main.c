@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:17:36 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/16 09:50:38 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 11:39:59 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,34 +50,8 @@ void	algorithm(t_list **list_a, t_list **list_b)
 		five_inputs(list_a, list_b);
 	else if (ft_lstsize(list_a) != 3)
 		legend_quick_sort(list_a, list_b);
-	// printf_list(list_a);
 	free_list(list_a);
 	free_list(list_b);
-}
-
-void	free_doble_punt(char **input)
-{
-	int	i;
-
-	i = 0;
-	while (input[i])
-	{
-		free(input[i]);
-		i++;
-	}
-	free(input);
-}
-
-void	free_list(t_list **list_a)
-{
-	t_list	*ds;
-
-	while ((*list_a))
-	{
-		ds = (*list_a)-> next;
-		free((*list_a));
-		(*list_a) = ds;
-	}
 }
 
 int	main(int argc, char **argv)
@@ -100,11 +74,11 @@ int	main(int argc, char **argv)
 			return (free_doble_punt(input), push_swap_errors(1, argc, argv), 0);
 		make_list(0, i, input, &list_a);
 		if (push_swap_errors(0, i, input) || list_is_sort(&list_a))
-			return (free_doble_punt(input), 0);
+			return (free_list(&list_a), free_doble_punt(input), 0);
 		return (algorithm(&list_a, &list_b), free_doble_punt(input), 0);
 	}
 	make_list(1, argc, argv, &list_a);
 	if (push_swap_errors(1, argc, argv) || list_is_sort(&list_a))
-		return (0);
+		return (free_list(&list_a), 0);
 	algorithm(&list_a, &list_b);
 }
