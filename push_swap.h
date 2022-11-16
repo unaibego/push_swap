@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:37:41 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/11 11:47:44 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 09:13:12 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void		push_b(t_list **list_a, t_list **list_b);
 // ********************************* ps_utils ***************************
 void		addlast(int content, t_list **anterior);
 int			list_is_sort(t_list **list_num);
-int			ft_lstsize(t_list *lst);
+int			ft_lstsize(t_list **lst);
 int			absolut(int c);
 int			is_max_min(int c, t_list **list_b);
 // ********************************* ps_three_input ***************************
@@ -86,4 +86,8 @@ int			contword(char const *s, char c);
 char		**ft_split(char const *s, char c);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
 size_t		ft_strlen(const char *str);
+// ********************************* ps_free ***************************
+void		free_doble_punt(char **input);
+void		free_list(t_list **list_a);
+
 #endif

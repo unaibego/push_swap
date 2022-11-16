@@ -6,11 +6,37 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 09:55:26 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/11 11:50:50 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/11 12:01:59 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	find_minimum_five(t_list **list_a)
+{
+	t_list	*ds;
+	int		i;
+	int		j;
+	int		minimo;
+
+	ds = *list_a;
+	minimo = ds -> content;
+	i = 0;
+	while (ds != NULL)
+	{
+		if (minimo >= ds -> content)
+		{
+			minimo = ds -> content;
+			j = i;
+		}
+		ds = ds -> next;
+		i++;
+	}
+	if (i / 2 < j)
+		return (j - i);
+	else
+		return (j);
+}
 
 void	five_inputs(t_list **list_a, t_list **list_b)
 {

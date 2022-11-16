@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 10:38:06 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/15 12:43:59 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int	list_is_sort(t_list **list_num)
 	return (1);
 }
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list **lst)
 {
 	t_list	*ds;
 	int		i;
 
-	ds = lst;
+	ds = *lst;
 	i = 0;
 	while (ds != NULL)
 	{

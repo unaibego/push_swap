@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:13:46 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 12:04:11 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 09:14:07 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	fill_up_pos_a(t_list **list_a)
 	int		i;
 
 	ds = *list_a;
-	len = ft_lstsize(*list_a);
+	len = ft_lstsize(list_a);
 	i = 0;
 	while (i < len / 2)
 	{
@@ -43,7 +43,7 @@ void	fill_up_pos_b(t_list **list_a, t_list **list_b)
 
 	ds = *list_a;
 	minimo = ds -> content;
-	len = ft_lstsize(*list_b);
+	len = ft_lstsize(list_b);
 	while (ds != NULL)
 	{
 		ds -> pos_b = find_position(0, len, ds -> content, list_b);

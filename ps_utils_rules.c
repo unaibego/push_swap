@@ -6,24 +6,24 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/10 11:46:04 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/15 09:29:45 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	addfirst(int content, t_list **anterior)
-{
-	t_list	*siguiente;
-	t_list	*ds;
+// void	addfirst(int content, t_list **anterior)
+// {
+// 	t_list	*siguiente;
+// 	t_list	*ds;
 
-	siguiente = (t_list *)malloc(sizeof(t_list));
-	siguiente -> content = content;
-	siguiente -> next = NULL;
-	ds = (*anterior);
-	(*anterior) = siguiente;
-	siguiente -> next = ds;
-}
+// 	siguiente = (t_list *)malloc(sizeof(t_list));
+// 	siguiente -> content = content;
+// 	siguiente -> next = NULL;
+// 	ds = (*anterior);
+// 	(*anterior) = siguiente;
+// 	siguiente -> next = ds;
+// }
 
 void	swap_a(t_list **list_num)
 {
@@ -66,19 +66,25 @@ void	rotate_down(t_list **list_a)
 		c = ds;
 		ds = ds -> next;
 	}
-	addfirst(ds -> content, list_a);
+	ds -> next = *list_a;
+	*list_a = ds;
 	c -> next = NULL;
 }
 
 void	push_b(t_list **list_a, t_list **list_b)
 {
+	t_list	*ds;
+
+	ds = (*list_a);
+	(*list_a) = (*list_a)->next;
 	if (*list_b != NULL)
-		addfirst((*list_a)-> content, list_b);
+	{
+		ds -> next = (*list_b);
+		(*list_b) = ds;
+	}
 	else
 	{
-		(*list_b) = (t_list *)malloc(sizeof(t_list));
-		(*list_b)-> content = (*list_a)-> content;
+		(*list_b) = ds;
 		(*list_b)-> next = NULL;
 	}
-	(*list_a) = (*list_a)->next;
 }

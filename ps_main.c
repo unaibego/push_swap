@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 09:17:36 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/11 11:47:33 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 09:50:38 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,7 @@ void	make_list(int start, int argc, char **input, t_list **primerelemento)
 {
 	int		i;
 
-	if ((*primerelemento) == NULL)
-		(*primerelemento) = (t_list *)malloc(sizeof(t_list));
+	(*primerelemento) = (t_list *)malloc(sizeof(t_list));
 	(*primerelemento)->content = ft_atoi(input[start]);
 	(*primerelemento)->next = NULL;
 	i = start + 1;
@@ -45,12 +44,40 @@ void	make_list(int start, int argc, char **input, t_list **primerelemento)
 
 void	algorithm(t_list **list_a, t_list **list_b)
 {
-	if (ft_lstsize(*list_a) == 3)
+	if (ft_lstsize(list_a) == 3)
 		three_inputs(list_a, list_b);
-	if (ft_lstsize(*list_a) == 5)
+	if (ft_lstsize(list_a) == 5)
 		five_inputs(list_a, list_b);
-	else if (ft_lstsize(*list_a) != 3)
+	else if (ft_lstsize(list_a) != 3)
 		legend_quick_sort(list_a, list_b);
+	// printf_list(list_a);
+	free_list(list_a);
+	free_list(list_b);
+}
+
+void	free_doble_punt(char **input)
+{
+	int	i;
+
+	i = 0;
+	while (input[i])
+	{
+		free(input[i]);
+		i++;
+	}
+	free(input);
+}
+
+void	free_list(t_list **list_a)
+{
+	t_list	*ds;
+
+	while ((*list_a))
+	{
+		ds = (*list_a)-> next;
+		free((*list_a));
+		(*list_a) = ds;
+	}
 }
 
 int	main(int argc, char **argv)
@@ -60,24 +87,24 @@ int	main(int argc, char **argv)
 	char	**input;
 	int		i;
 
+	list_b = NULL;
 	i = 0;
+	if (argc == 1)
+		return (0);
 	if (argc == 2)
 	{
 		input = ft_split(argv[1], ' ');
 		while (input[i])
 			i++;
 		if (i == 1)
-			return (0);
+			return (free_doble_punt(input), push_swap_errors(1, argc, argv), 0);
 		make_list(0, i, input, &list_a);
-		if (push_swap_errors(0, i, input))
-			return (0);
+		if (push_swap_errors(0, i, input) || list_is_sort(&list_a))
+			return (free_doble_punt(input), 0);
+		return (algorithm(&list_a, &list_b), free_doble_punt(input), 0);
 	}
-	else
-	{
-		make_list(1, argc, argv, &list_a);
-		if (push_swap_errors(1, argc, argv))
-			return (0);
-	}
+	make_list(1, argc, argv, &list_a);
+	if (push_swap_errors(1, argc, argv) || list_is_sort(&list_a))
+		return (0);
 	algorithm(&list_a, &list_b);
-	return (0);
 }
