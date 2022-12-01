@@ -6,24 +6,11 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/25 08:58:58 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/15 09:29:45 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:24:14 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-// void	addfirst(int content, t_list **anterior)
-// {
-// 	t_list	*siguiente;
-// 	t_list	*ds;
-
-// 	siguiente = (t_list *)malloc(sizeof(t_list));
-// 	siguiente -> content = content;
-// 	siguiente -> next = NULL;
-// 	ds = (*anterior);
-// 	(*anterior) = siguiente;
-// 	siguiente -> next = ds;
-// }
 
 void	swap_a(t_list **list_num)
 {

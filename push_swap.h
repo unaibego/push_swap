@@ -6,7 +6,7 @@
 /*   By: ubegona <ubegona@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 09:37:41 by ubegona           #+#    #+#             */
-/*   Updated: 2022/11/16 09:13:12 by ubegona          ###   ########.fr       */
+/*   Updated: 2022/11/16 12:24:28 by ubegona          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void		do_sgl_movements(t_list **list_a, t_list **list_b,
 // ********************************* ps_quick_sort ***************************
 void		quick_sort(t_list **list_a, t_list **list_b);
 // ********************************* ps_utils_rules ***************************
-void		addfirst(int content, t_list **anterior);
 void		swap_a(t_list **list_num);
 void		rotate_up(t_list **list_a);
 void		rotate_down(t_list **list_a);
